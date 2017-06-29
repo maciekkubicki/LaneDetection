@@ -527,7 +527,7 @@ public:
         QObject::connect(checkBox_2, SIGNAL(toggled(bool)), p2y, SLOT(setEnabled(bool)));
         QObject::connect(checkBox_2, SIGNAL(toggled(bool)), checkBox_3, SLOT(setEnabled(bool)));
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(QTLaneDetectorClass);

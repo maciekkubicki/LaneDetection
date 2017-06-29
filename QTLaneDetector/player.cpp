@@ -21,7 +21,7 @@ void sleepcp(int milliseconds)
 	}
 }
 
-Size Player::getSize()
+Size Player::getSize()//size of video
 {
 	if (present_filename != "")
 	{
@@ -31,7 +31,8 @@ Size Player::getSize()
 	else return Size(0,0);
 }
 
-bool Player::loadVideo(std::string filename) {
+bool Player::loadVideo(std::string filename)//video loading
+{
 	capture.open(filename);
 	if (capture.isOpened())
 	{
@@ -46,7 +47,7 @@ bool Player::loadVideo(std::string filename) {
 		return false;
 }
 
-int Player::countFrames()
+int Player::countFrames()//number of frames in video
 {
 	if (present_filename != "")
 	{

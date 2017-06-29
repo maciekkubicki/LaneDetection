@@ -32,6 +32,8 @@ private slots:
 private:
 	void setReadonly(bool v);
 	void updateParams();
+	void validateParams();
+	void updateROIconstraints(Size s);
 	Ui::QTLaneDetectorClass ui;
 	Player* myPlayer;
 	parameters params;

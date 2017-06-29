@@ -60,6 +60,14 @@ void QTLaneDetector::updatePlayerUI(QImage img)
 
 }
 
+void QTLaneDetector::updateROIconstraints(Size s)
+{
+	ui.p1x->setMaximum(s.width);
+	ui.p2x->setMaximum(s.width);
+	ui.p1y->setMaximum(s.height);
+	ui.p2y->setMaximum(s.height);
+}
+
 
 void QTLaneDetector::on_pushButton_clicked()//loader
 {
@@ -83,6 +91,9 @@ void QTLaneDetector::on_pushButton_clicked()//loader
 			ss << "Filename: " << filename.toStdString() << std::endl;
 			ss << "Size: " << myPlayer->getSize() << std::endl;
 			ui.plainTextEdit->document()->setPlainText(QString::fromStdString(ss.str()));
+			updateROIconstraints(myPlayer->getSize());
+			
+
 		}
 	}
 
@@ -92,6 +103,7 @@ void QTLaneDetector::on_pushButton_2_clicked()//player button
 {
 	if (myPlayer->isStopped() && myPlayer->isLoaded())
 	{
+		validateParams();
 		updateParams();
 		setReadonly(true);
 		myPlayer->Play(params,hlparams, roiparams);
@@ -105,7 +117,42 @@ void QTLaneDetector::on_pushButton_2_clicked()//player button
 	}
 }
 
-void QTLaneDetector::updateParams()
+void QTLaneDetector::validateParams()//make ui forgivness
+{
+	if (ui.wmin->value() > ui.wmax->value())
+	{
+		int tmp = ui.wmin->value();
+		ui.wmin->setValue(ui.wmax->value());
+		ui.wmax->setValue(tmp);
+	}
+	if (ui.h1->value() > ui.h2->value())
+	{
+		int tmp = ui.h1->value();
+		ui.h1->setValue(ui.h2->value());
+		ui.h2->setValue(tmp);
+	}
+	if (ui.s1->value() > ui.s2->value())
+	{
+		int tmp = ui.s1->value();
+		ui.s1->setValue(ui.s2->value());
+		ui.s2->setValue(tmp);
+	}
+	if (ui.v1->value() > ui.v2->value())
+	{
+		int tmp = ui.v1->value();
+		ui.v1->setValue(ui.v2->value());
+		ui.v2->setValue(tmp);
+	}
+
+	if (ui.p1x->value() > ui.p2x->value())
+	{
+		int tmp = ui.p1x->value();
+		ui.p1x->setValue(ui.p2x->value());
+		ui.p2x->setValue(tmp);
+	}
+}
+
+void QTLaneDetector::updateParams()//update parameters used in player
 {
 
 	params.wmin = ui.wmin->value();
@@ -130,7 +177,7 @@ void QTLaneDetector::updateParams()
 	roiparams.mark = ui.checkBox_3->isChecked();
 }
 
-void QTLaneDetector::setReadonly(bool v)
+void QTLaneDetector::setReadonly(bool v)//enabling needed buttons
 {
 	ui.wmin->setEnabled(!v);
 	ui.wmax->setEnabled(!v);
