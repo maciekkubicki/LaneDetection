@@ -29,6 +29,7 @@ struct ROIparams//seting ROI parameters
 {
 	bool use;
 	bool mark;
+	bool markroi;
 	int p1x;
 	int p2x;
 	int p3x;

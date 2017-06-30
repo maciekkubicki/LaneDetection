@@ -92,7 +92,7 @@ Mat LaneDetector::Detect(Mat frame, parameters params, HLparameters hlparams, RO
 		int lminx = 10000, lminy = 10000, lmaxx = -1000, lmaxy = -1000;
 		int rminx = 10000, rminy = 10000, rmaxx = -1000, rmaxy = -1000;
 		
-		/* 
+		/* //wersja bez LineFit - slabe efekty - dzialala na podstawie minimum i maksimum
 		for (size_t i = 0; i < llines.size(); ++i)
 		{
 			Point l = llines[i];
@@ -126,6 +126,7 @@ Mat LaneDetector::Detect(Mat frame, parameters params, HLparameters hlparams, RO
 			}
 		}
 		*/
+
 		LineFit left(llines);
 		LineFit right(rlines);
 			
@@ -144,7 +145,20 @@ Mat LaneDetector::Detect(Mat frame, parameters params, HLparameters hlparams, RO
 			line(dst, Point(lminx, lminy), Point(lmaxx, lmaxy), Scalar(0, 0, 255), 3, CV_AA);
 		if (rlines.size()>0)
 			line(dst, Point(rminx, rminy), Point(rmaxx, rmaxy), Scalar(0, 255, 0), 3, CV_AA);
+
 		
+		
+	}
+
+	if (roiparams.markroi)
+	{
+		Point points[4] = { Point(roiparams.p1x, roiparams.p1y), Point(roiparams.p2x, roiparams.p2y), Point(roiparams.p3x, roiparams.p3y), Point(roiparams.p4x, roiparams.p4y) };
+		for (int i = 0; i < 4; ++i)
+		{
+			Point present = points[i];
+			Point next = points[(i + 1) % 4];
+			line(dst, present, next, Scalar(255, 0, 0), 3);
+		}
 	}
 	
 	return dst;

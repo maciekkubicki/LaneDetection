@@ -175,9 +175,10 @@ void QTLaneDetector::updateParams()//update parameters used in player
 	roiparams.p2y = ui.p2y->value();
 	roiparams.use = ui.checkBox_2->isChecked();
 	roiparams.mark = ui.checkBox_3->isChecked();
+	roiparams.markroi = ui.checkBox_4->isChecked();
 }
 
-void QTLaneDetector::setReadonly(bool v)//enabling needed buttons
+void QTLaneDetector::setReadonly(bool v)//enabling needed buttons // to w sumie mo¿naby zrealizowaæ qtdesignerze
 {
 	ui.wmin->setEnabled(!v);
 	ui.wmax->setEnabled(!v);

@@ -92,7 +92,7 @@ public:
     QSpinBox *v2;
     QGroupBox *groupBox_4;
     QCheckBox *checkBox_2;
-    QWidget *widget;
+    QWidget *layoutWidget2;
     QVBoxLayout *verticalLayout_2;
     QGridLayout *gridLayout_4;
     QLabel *label_17;
@@ -104,6 +104,7 @@ public:
     QLabel *label_19;
     QLabel *label_3;
     QCheckBox *checkBox_3;
+    QCheckBox *checkBox_4;
     QLabel *label_20;
     QPlainTextEdit *plainTextEdit;
     QMenuBar *menuBar;
@@ -219,7 +220,7 @@ public:
         minline->setObjectName(QStringLiteral("minline"));
         minline->setMinimum(5);
         minline->setMaximum(200);
-        minline->setValue(30);
+        minline->setValue(20);
 
         formLayout->setWidget(3, QFormLayout::FieldRole, minline);
 
@@ -408,14 +409,15 @@ public:
         tabWidget->addTab(tab_2, QString());
         groupBox_4 = new QGroupBox(centralWidget);
         groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
-        groupBox_4->setGeometry(QRect(540, 200, 141, 151));
+        groupBox_4->setGeometry(QRect(540, 200, 141, 161));
         checkBox_2 = new QCheckBox(groupBox_4);
         checkBox_2->setObjectName(QStringLiteral("checkBox_2"));
+        checkBox_2->setEnabled(false);
         checkBox_2->setGeometry(QRect(10, 20, 81, 17));
-        widget = new QWidget(groupBox_4);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(10, 50, 126, 92));
-        verticalLayout_2 = new QVBoxLayout(widget);
+        layoutWidget2 = new QWidget(groupBox_4);
+        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(10, 60, 126, 92));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget2);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
@@ -423,12 +425,12 @@ public:
         gridLayout_4 = new QGridLayout();
         gridLayout_4->setSpacing(6);
         gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
-        label_17 = new QLabel(widget);
+        label_17 = new QLabel(layoutWidget2);
         label_17->setObjectName(QStringLiteral("label_17"));
 
         gridLayout_4->addWidget(label_17, 3, 0, 1, 1);
 
-        p1x = new QSpinBox(widget);
+        p1x = new QSpinBox(layoutWidget2);
         p1x->setObjectName(QStringLiteral("p1x"));
         p1x->setEnabled(false);
         p1x->setMaximum(1500);
@@ -436,41 +438,41 @@ public:
 
         gridLayout_4->addWidget(p1x, 3, 1, 1, 1);
 
-        p1y = new QSpinBox(widget);
+        p1y = new QSpinBox(layoutWidget2);
         p1y->setObjectName(QStringLiteral("p1y"));
         p1y->setEnabled(false);
         p1y->setMaximum(1500);
-        p1y->setValue(320);
+        p1y->setValue(330);
 
         gridLayout_4->addWidget(p1y, 3, 2, 1, 1);
 
-        label_18 = new QLabel(widget);
+        label_18 = new QLabel(layoutWidget2);
         label_18->setObjectName(QStringLiteral("label_18"));
 
         gridLayout_4->addWidget(label_18, 4, 0, 1, 1);
 
-        p2y = new QSpinBox(widget);
+        p2y = new QSpinBox(layoutWidget2);
         p2y->setObjectName(QStringLiteral("p2y"));
         p2y->setEnabled(false);
         p2y->setMaximum(1500);
-        p2y->setValue(320);
+        p2y->setValue(330);
 
         gridLayout_4->addWidget(p2y, 4, 2, 1, 1);
 
-        p2x = new QSpinBox(widget);
+        p2x = new QSpinBox(layoutWidget2);
         p2x->setObjectName(QStringLiteral("p2x"));
         p2x->setEnabled(false);
         p2x->setMaximum(1500);
-        p2x->setValue(490);
+        p2x->setValue(500);
 
         gridLayout_4->addWidget(p2x, 4, 1, 1, 1);
 
-        label_19 = new QLabel(widget);
+        label_19 = new QLabel(layoutWidget2);
         label_19->setObjectName(QStringLiteral("label_19"));
 
         gridLayout_4->addWidget(label_19, 2, 2, 1, 1);
 
-        label_3 = new QLabel(widget);
+        label_3 = new QLabel(layoutWidget2);
         label_3->setObjectName(QStringLiteral("label_3"));
 
         gridLayout_4->addWidget(label_3, 2, 1, 1, 1);
@@ -478,12 +480,16 @@ public:
 
         verticalLayout_2->addLayout(gridLayout_4);
 
-        checkBox_3 = new QCheckBox(widget);
+        checkBox_3 = new QCheckBox(layoutWidget2);
         checkBox_3->setObjectName(QStringLiteral("checkBox_3"));
         checkBox_3->setEnabled(false);
 
         verticalLayout_2->addWidget(checkBox_3);
 
+        checkBox_4 = new QCheckBox(groupBox_4);
+        checkBox_4->setObjectName(QStringLiteral("checkBox_4"));
+        checkBox_4->setEnabled(false);
+        checkBox_4->setGeometry(QRect(10, 40, 81, 17));
         label_20 = new QLabel(centralWidget);
         label_20->setObjectName(QStringLiteral("label_20"));
         label_20->setGeometry(QRect(0, 330, 381, 41));
@@ -526,8 +532,10 @@ public:
         QObject::connect(checkBox_2, SIGNAL(toggled(bool)), p1y, SLOT(setEnabled(bool)));
         QObject::connect(checkBox_2, SIGNAL(toggled(bool)), p2y, SLOT(setEnabled(bool)));
         QObject::connect(checkBox_2, SIGNAL(toggled(bool)), checkBox_3, SLOT(setEnabled(bool)));
+        QObject::connect(checkBox_2, SIGNAL(toggled(bool)), checkBox_4, SLOT(setEnabled(bool)));
+        QObject::connect(checkBox, SIGNAL(toggled(bool)), checkBox_2, SLOT(setEnabled(bool)));
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(QTLaneDetectorClass);
@@ -566,6 +574,7 @@ public:
         label_19->setText(QApplication::translate("QTLaneDetectorClass", "   Y", 0));
         label_3->setText(QApplication::translate("QTLaneDetectorClass", "    X", 0));
         checkBox_3->setText(QApplication::translate("QTLaneDetectorClass", "Mark lane", 0));
+        checkBox_4->setText(QApplication::translate("QTLaneDetectorClass", "Mark ROI", 0));
         label_20->setText(QString());
         plainTextEdit->setPlainText(QApplication::translate("QTLaneDetectorClass", "Filename:\n"
 "Size: \n"

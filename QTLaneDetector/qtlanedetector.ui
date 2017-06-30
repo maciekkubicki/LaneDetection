@@ -352,7 +352,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -626,13 +626,16 @@
       <x>540</x>
       <y>200</y>
       <width>141</width>
-      <height>151</height>
+      <height>161</height>
      </rect>
     </property>
     <property name="title">
      <string>ROI upper points</string>
     </property>
     <widget class="QCheckBox" name="checkBox_2">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -649,7 +652,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>50</y>
+       <y>60</y>
        <width>126</width>
        <height>92</height>
       </rect>
@@ -686,7 +689,7 @@
            <number>1500</number>
           </property>
           <property name="value">
-           <number>320</number>
+           <number>330</number>
           </property>
          </widget>
         </item>
@@ -706,7 +709,7 @@
            <number>1500</number>
           </property>
           <property name="value">
-           <number>320</number>
+           <number>330</number>
           </property>
          </widget>
         </item>
@@ -719,7 +722,7 @@
            <number>1500</number>
           </property>
           <property name="value">
-           <number>490</number>
+           <number>500</number>
           </property>
          </widget>
         </item>
@@ -750,6 +753,22 @@
        </widget>
       </item>
      </layout>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_4">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>81</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Mark ROI</string>
+     </property>
     </widget>
    </widget>
    <widget class="QLabel" name="label_20">
@@ -833,11 +852,11 @@ Size:
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>408</x>
-     <y>158</y>
+     <x>413</x>
+     <y>160</y>
     </hint>
     <hint type="destinationlabel">
-     <x>411</x>
+     <x>414</x>
      <y>184</y>
     </hint>
    </hints>
@@ -849,12 +868,12 @@ Size:
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>396</x>
+     <x>413</x>
      <y>184</y>
     </hint>
     <hint type="destinationlabel">
-     <x>393</x>
-     <y>158</y>
+     <x>413</x>
+     <y>160</y>
     </hint>
    </hints>
   </connection>
@@ -897,8 +916,8 @@ Size:
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>544</x>
-     <y>264</y>
+     <x>550</x>
+     <y>269</y>
     </hint>
     <hint type="destinationlabel">
      <x>597</x>
@@ -929,12 +948,12 @@ Size:
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>532</x>
+     <x>550</x>
      <y>269</y>
     </hint>
     <hint type="destinationlabel">
-     <x>612</x>
-     <y>321</y>
+     <x>673</x>
+     <y>335</y>
     </hint>
    </hints>
   </connection>
@@ -945,7 +964,7 @@ Size:
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>535</x>
+     <x>550</x>
      <y>269</y>
     </hint>
     <hint type="destinationlabel">
@@ -961,12 +980,44 @@ Size:
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>536</x>
-     <y>264</y>
+     <x>550</x>
+     <y>269</y>
     </hint>
     <hint type="destinationlabel">
-     <x>543</x>
-     <y>363</y>
+     <x>551</x>
+     <y>383</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_4</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>565</x>
+     <y>263</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>560</x>
+     <y>282</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_2</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>43</x>
+     <y>422</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>586</x>
+     <y>259</y>
     </hint>
    </hints>
   </connection>
