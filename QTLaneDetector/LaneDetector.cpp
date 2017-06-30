@@ -48,7 +48,7 @@ Mat LaneDetector::Detect(Mat frame, parameters params, HLparameters hlparams, RO
 	GaussianBlur(mask, mask, Size(5,5), 0, 0);
 
 	Mat edges;
-	Canny(mask, edges, 50, 150);
+	Canny(mask, edges, 45, 155);
 	if (roiparams.use)
 	{
 		Mat roimask(mask.rows, mask.cols, CV_8U, Scalar(0));

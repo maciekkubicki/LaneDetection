@@ -196,6 +196,7 @@ void QTLaneDetector::setReadonly(bool v)//enabling needed buttons // to w sumie 
 	ui.checkBox->setEnabled(!v);
 	ui.checkBox_2->setEnabled(!v);
 	ui.checkBox_3->setEnabled(!v);
+	ui.checkBox_4->setEnabled(!v);
 	
 	if (ui.checkBox_2->isChecked())
 	{
